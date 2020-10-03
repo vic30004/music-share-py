@@ -11,3 +11,7 @@ class Track(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     posted_by = models.ForeignKey(
         get_user_model(), null=True, on_delete=models.CASCADE)
+
+class Like(models.Model):
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
+    tack = models.ForeignKey('tracks.Track', related_name='likes', on_delete=models.CASCADE)
